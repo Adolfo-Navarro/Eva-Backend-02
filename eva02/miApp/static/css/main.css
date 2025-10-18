@@ -1,0 +1,231 @@
+/* Estilos principales para la sección de juegos */
+:root{
+	--bg: #0f1724; /* fondo oscuro */
+	--card: #0b1220;
+	--muted: #98a0b3;
+	--accent: #6ee7b7; /* verde suave */
+	--accent-2: #7dd3fc; /* azul claro */
+	--glass: rgba(255,255,255,0.04);
+}
+
+/* Colores por categoría (añadir más según necesidad) */
+:root{
+	--cat-action: #ef4444; /* rojo */
+	--cat-aventura: #f97316; /* naranja */
+	--cat-estrategia: #f59e0b; /* amarillo */
+	--cat-deportes: #10b981; /* verde */
+	--cat-rpg: #8b5cf6; /* morado */
+	--cat-indie: #06b6d4; /* cian */
+	--cat-default: var(--accent-2);
+}
+
+html,body{
+	height:100%;
+}
+
+body{
+	background: linear-gradient(180deg, #071426 0%, #0f1724 100%);
+	color: #768ba5;
+	font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	margin:0;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+main{padding-bottom:4rem}
+
+/* Encabezado */
+.py-5.text-center.container h1{
+	font-weight:700;
+	letter-spacing: -0.02em;
+	color: #ffffff;
+	text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* Album / grid */
+.album{
+	background: transparent;
+}
+
+.card{
+	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	border: 1px solid rgba(255,255,255,0.04);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s;
+	box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+
+/* Left accent bar to indicate category color */
+.card::before{
+	content: '';
+	position: absolute;
+	left:0;
+	top:0;
+	bottom:0;
+	width:6px;
+	background: linear-gradient(180deg,var(--accent),var(--accent-2));
+	border-top-left-radius:12px;
+	border-bottom-left-radius:12px;
+}
+
+/* category color helpers: class names should be like game-<slug> */
+.game-action::before{background:var(--cat-action)}
+.game-aventura::before{background:var(--cat-aventura)}
+.game-estrategia::before{background:var(--cat-estrategia)}
+.game-deportes::before{background:var(--cat-deportes)}
+.game-rpg::before{background:var(--cat-rpg)}
+.game-indie::before{background:var(--cat-indie)}
+
+/* Badge color follows the card accent */
+.game-action .badge-cat{color:#fff;background:var(--cat-action);border-color:rgba(0,0,0,0.08)}
+.game-aventura .badge-cat{color:#fff;background:var(--cat-aventura);border-color:rgba(0,0,0,0.08)}
+.game-estrategia .badge-cat{color:#000;background:var(--cat-estrategia);border-color:rgba(0,0,0,0.08)}
+.game-deportes .badge-cat{color:#fff;background:var(--cat-deportes);border-color:rgba(0,0,0,0.08)}
+.game-rpg .badge-cat{color:#fff;background:var(--cat-rpg);border-color:rgba(0,0,0,0.08)}
+.game-indie .badge-cat{color:#000;background:var(--cat-indie);border-color:rgba(0,0,0,0.08)}
+.game-default .badge-cat{color:#fff;background:var(--cat-default)}
+
+/* Ajuste: que el .card tenga position relative para el ::before */
+.card{position:relative}
+
+.card:hover{
+	transform: translateY(-8px) scale(1.01);
+	box-shadow: 0 18px 42px rgba(2,6,23,0.72);
+}
+
+.card img{
+	width:100%;
+	height:170px;
+	object-fit:cover;
+	display:block;
+	background: linear-gradient(90deg,var(--accent),var(--accent-2));
+}
+
+.card-body{
+	padding:1rem 1rem 1.25rem;
+}
+
+.card-title{
+	margin:0 0 .3rem 0;
+	font-size:1.05rem;
+	color: #071427; /* título en oscuro para mejor contraste */
+}
+
+.small.mb-0{
+	color:var(--muted);
+	display:block;
+	font-size:0.86rem;
+	margin-bottom:0.6rem;
+}
+
+.btn-group .btn{
+	border-radius:8px;
+	padding: .45rem .6rem;
+	font-size:0.86rem;
+	border:1px solid rgba(0,0,0,0.06);
+}
+
+/* Make the 'Ver' button use the category accent when possible; fallback to accent-2 */
+.card .btn-outline-secondary{
+	color: #071427;
+	background: rgba(255,255,255,0.9);
+	border-color: rgba(0,0,0,0.06);
+}
+
+/* category-aware button colors */
+.game-action .btn-outline-secondary{background:var(--cat-action); color:#fff; border-color: rgba(0,0,0,0.08)}
+.game-aventura .btn-outline-secondary{background:var(--cat-aventura); color:#fff; border-color: rgba(0,0,0,0.08)}
+.game-estrategia .btn-outline-secondary{background:var(--cat-estrategia); color:#071427; border-color: rgba(0,0,0,0.08)}
+.game-deportes .btn-outline-secondary{background:var(--cat-deportes); color:#fff; border-color: rgba(0,0,0,0.08)}
+.game-rpg .btn-outline-secondary{background:var(--cat-rpg); color:#fff; border-color: rgba(0,0,0,0.08)}
+.game-indie .btn-outline-secondary{background:var(--cat-indie); color:#071427; border-color: rgba(0,0,0,0.08)}
+.game-default .btn-outline-secondary{background:var(--cat-default); color:#071427}
+
+.btn-outline-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(2,6,23,0.12)}
+
+.text-body-secondary{
+	color:var(--muted) !important;
+}
+
+.text-body-secondary a{
+	color:var(--accent-2);
+	text-decoration:none;
+	font-weight:600;
+}
+
+.text-body-secondary a:hover{
+	text-decoration:underline;
+}
+
+.album .container{padding-top:0.5rem}
+
+/* Precio destacado */
+.text-body-secondary small{
+	color: #000000;
+	font-weight:700;
+}
+
+/* Footer */
+footer{
+	border-top:1px solid rgba(255,255,255,0.03);
+	margin-top:2rem;
+}
+
+/* Responsivo: ajustar imagenes en pantallas pequeñas */
+@media (max-width:576px){
+	.card img{height:150px}
+	.card-body{padding:.8rem}
+}
+
+@media (min-width:992px){
+	.card img{height:200px}
+}
+
+/* Pequeños detalles: categorías como badges */
+.small.mb-0 span.badge-cat{
+	display:inline-block;
+	background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+	border:1px solid rgba(255,255,255,0.04);
+	color:var(--accent-2);
+	padding:4px 8px;
+	border-radius:999px;
+	font-size:0.78rem;
+	margin-left:8px;
+}
+
+/* Utility: container tweak to center content more estrecho */
+.container{max-width:1200px}
+
+/* Fallback para imagen rota */
+img[alt="No hay foto"]{
+	object-fit:contain;
+	background:linear-gradient(90deg,#06202b,#0b1721);
+	color: #9fb4c8;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+/* Micro-interactions */
+.card .btn:active{transform:translateY(1px)}
+
+/* Category filter bar styles */
+.category-nav{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.category-nav .cat-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:.35rem .6rem;border-radius:999px;color:var(--accent-2);cursor:pointer}
+.category-nav .cat-btn.active{background:var(--accent-2);color:#071427;border-color:transparent}
+.card.hidden-by-filter{display:none !important}
+
+/* Navbar active link style (Bootstrap uses .active; strengthen contrast) */
+.nav-link.active{background:var(--accent-2);color:#071427;border-radius:999px;padding:.35rem .6rem}
+.nav-link{margin-left:.35rem}
+
+/* Styles for details-based dropdown in navbar (no JS) */
+.nav-details{position:relative;display:inline-block}
+.nav-details summary{list-style:none;cursor:pointer}
+.nav-details summary::-webkit-details-marker{display:none}
+.nav-details .nav-details-panel{position:absolute;right:0;top:calc(100% + .35rem);min-width:180px;z-index:1050;padding:.25rem 0;border-radius:.5rem}
+.nav-details[open] > summary{background:var(--accent-2);color:#071427;border-radius:999px;padding:.35rem .6rem}
+.nav-details .dropdown-item{display:block;padding:.35rem .8rem;color:#071427;text-decoration:none}
+.nav-details .dropdown-item:hover{background:rgba(0,0,0,0.04)}
+

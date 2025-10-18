@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Ejercicio 1{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/detalle.css' %}">
+{% endblock css %}
+
+
+{% block main %}
+
+  <main class="detalle-page">
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">{{producto.Nombre}}</h1>
+          <img src="{{producto.Imagen}}" />
+          <p>
+            <a href="{% url 'main' %}" class="btn btn-detalle my-2">Página Principal</a>
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+       <p>{{producto.Descripcion}}</p>
+       <p>Precio: ${{producto.Precio}}</p>
+  <p>Categoría: <a href="{% url 'categoria' producto.Categoria %}">{{ producto.Categoria }}</a></p>
+      </div>
+    </div>
+  </main>
+
+{% endblock main %}
